@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zoe Family – Home</title>
+<link rel="stylesheet" href="assets/styles.css">
+<script type="module">
+import { nav, mountContainer } from './assets/app.js';
+nav();
+const root = mountContainer();
+const card = document.createElement('section'); card.className='card';
+card.innerHTML = `<h2>Welcome home ✨</h2>
+<p class="small">This is your private family website. Data is saved locally on each device.
+If you want real‑time sharing (e.g., orders & shopping visible to both of you), set Supabase URL/KEY in <code>assets/app.js</code> and create a simple <code>kv</code> table (instructions inside).</p>`;
+root.appendChild(card);
+</script>
+</head><body></body></html>
