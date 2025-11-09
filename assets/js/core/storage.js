@@ -12,6 +12,9 @@ setRecipes(v){ L.set('recipes', v); },
 // shopping
 getShopping(){ return L.get('shopping', []); },
 setShopping(v){ L.set('shopping', v); },
+// archived (history)
+getShoppingArchive() { return L.get("shopping_archive", []); },
+setShoppingArchive(v) { L.set("shopping_archive", v); },
 // orders
 getOrders(){ return L.get('orders', {items:[], note:""}); },
 setOrders(v){ L.set('orders', v); }
