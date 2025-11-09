@@ -1,27 +1,23 @@
-// v10 — member detail page
+// v11 — Member detail page
 import { nav } from "../core/nav.js?v=9";
-import { MembersDetailView } from "../views/memberDetailView.js?v=10";
-import { FAMILY } from "../data/family.js?v=3";
+import { setPageBackground } from "../core/bg.js?v=1";
+import { FAMILY } from "../data/family.js?v=4";
+import { MembersDetailView } from "../views/memberDetailView.js?v=12";
 
 nav();
 
-// mount root
+const params = new URL(location.href).searchParams;
+const id = params.get("id");
+const member = FAMILY.find(m => m.id === id);
+
+// allow per-member page bg via data.backgrounds?.page
+const bg = member?.backgrounds?.page || "assets/image/bg/family.jpg";
+setPageBackground(bg, { opacity: .40, blur: 16 });
+
 const root = document.body.appendChild(document.createElement("main"));
 root.className = "container";
 
-function getId() {
-  const u = new URL(window.location.href);
-  return u.searchParams.get("id");
-}
-
-const id = getId();
-const member = FAMILY.find(m => m.id === id);
-
 const view = new MembersDetailView(root);
-if (member) {
-  view.render(member);
-} else {
-  view.renderNotFound(id);
-}
+member ? view.render(member) : view.renderNotFound(id);
 
-console.log("member.page v10", { id });
+console.log("member.page v11 loaded", { id });

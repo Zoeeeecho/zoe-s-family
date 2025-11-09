@@ -1,21 +1,16 @@
-// v2 — boot the read-only page + modal behavior
+// v3 — Family list page
 import { nav } from "../core/nav.js?v=9";
-import { FAMILY } from "../data/family.js?v=3";
-import { MembersView } from "../views/membersView.js?v=2";
+import { setPageBackground } from "../core/bg.js?v=1";
+import { FAMILY } from "../data/family.js?v=4";
+import { MembersView } from "../views/membersView.js?v=4";
 
+setPageBackground("assets/image/bg/family.jpg", { opacity: .40, blur: 16 });
 nav();
+
 const root = document.body.appendChild(document.createElement("main"));
 root.className = "container";
 
 const view = new MembersView(root);
 view.render(FAMILY);
 
-// clicking a card opens modal
-view.onOpen = (member) => view.openProfile(member);
-
-// ESC to close
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") view.closeProfile();
-});
-
-console.log("members.page v2");
+console.log("members.page v3 loaded");
